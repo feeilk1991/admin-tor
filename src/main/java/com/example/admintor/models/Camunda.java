@@ -10,6 +10,5 @@ public class Camunda {
     @Id
     private String id;
     private String mainId;
-
     private String instanceId;
 }
