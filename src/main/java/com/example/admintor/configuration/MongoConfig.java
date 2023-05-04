@@ -11,8 +11,11 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories(basePackages = "com.example.admintor.repository")
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
-    @Value("${spring.data.mong odb.uri}")
+    @Value("${spring.data.mongodb.uri}")
     private String uri;
+
+    @Value("${spring.data.mongodb.database}")
+    private String databaseName;
 
     @Override
     public MongoClient mongoClient() {
@@ -21,6 +24,6 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "mydb";
+        return databaseName;
     }
 }

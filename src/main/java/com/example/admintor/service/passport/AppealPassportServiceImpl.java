@@ -1,11 +1,11 @@
 package com.example.admintor.service.passport;
 
 import com.example.admintor.models.AppealPassport;
-import com.example.admintor.repository.appeal.AppealRepository;
 import com.example.admintor.repository.passport.AppealPassportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -27,5 +27,10 @@ public class AppealPassportServiceImpl implements AppealPassportService{
     public void deleteAppealPassport(String appealId) {
         AppealPassport appealPassport = Objects.requireNonNull(passportRepository.findById(appealId).orElse(null));
         passportRepository.delete(appealPassport);
+    }
+
+    @Override
+    public List<AppealPassport> findAllAppeals() {
+        return passportRepository.findAll();
     }
 }

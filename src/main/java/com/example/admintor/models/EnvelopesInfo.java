@@ -5,10 +5,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document(collection = "appealsPassports")
-public class AppealPassport {
+@Document(collection = "appealsErknmEnvelopesInfo")
+public class EnvelopesInfo {
     @Id
     private String id;
-    private String appealId;
+    private String mainId;
+    private String passportId;
     private String collectionName;
+    private String taskId;
+    private String erpType;
 }

@@ -1,8 +1,9 @@
 package com.example.admintor.service.passport;
 
-import com.example.admintor.models.Appeal;
 import com.example.admintor.models.AppealPassport;
 import org.springframework.lang.NonNull;
+
+import java.util.List;
 
 public interface AppealPassportService {
     @NonNull
@@ -13,4 +14,6 @@ public interface AppealPassportService {
 
     @NonNull
     void deleteAppealPassport(String uid);
+
+    List<AppealPassport> findAllAppeals();
 }
