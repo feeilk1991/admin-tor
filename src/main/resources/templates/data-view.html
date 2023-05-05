@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Получение данных</title>
+</head>
+<body>
+<h1>Получение данных</h1>
+<form method="get" action="/api/appeal">
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id">
+    <button type="submit">Получить данные</button>
+</form>
+
+<!-- Отображение полученных данных -->
+<div th:if="${appeal}">
+    <p th:text="${appeal.id}"></p>
+</div>
+</body>
+</html>

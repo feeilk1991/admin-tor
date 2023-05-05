@@ -4,12 +4,12 @@ import com.example.admintor.models.Appeal;
 import com.example.admintor.service.appeal.AppealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -17,14 +17,18 @@ public class AppealController {
     @Autowired
     private AppealService appealService;
 
-    @GetMapping("/appeals/{id}")
-    public Appeal findAppealById(@PathVariable String id) {
-        return appealService.getAppealId(id);
+    @GetMapping("/appeal")
+    public String getDataById(@RequestParam(name = "id") String id, Model model) {
+        // Получение данных по id из источника, если id был отправлен
+            Appeal appeal = getDataByIdFromSource(id);
+            model.addAttribute("appeal", appeal);
+
+        // Возвращение имени представления для отображения данных
+        return "data-view";
     }
 
-    @GetMapping("/appeals")
-    public List<Appeal> findAllAppeals()
-    {
-        return appealService.getListAppeals();
+    private Appeal getDataByIdFromSource(String id) {
+        Optional<Appeal> myDataOptional = Optional.of(appealService.getAppealId(id));
+        return myDataOptional.orElse(null);
     }
 }
