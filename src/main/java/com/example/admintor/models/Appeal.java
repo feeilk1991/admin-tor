@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @Document(collection = "appeals")
@@ -22,4 +23,10 @@ public class Appeal {
 
     @Field("subservices")
     private Object subServices;
+
+    @Field("subservices[0].camundaProcessInfo")
+    private Map<Camunda, String> camundaProcessInfo;
+
+    @Field("subservices[0].camundaProcessInfo.camundaBusinessInfoId")
+    private String camundaBusinessInfoId;
 }
