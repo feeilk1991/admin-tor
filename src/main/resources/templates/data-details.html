@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Детальная страница</title>
+</head>
+<body>
+<div>
+    <div th:if="${appeal != null && appeal.id != null}">
+        <p>Связь камунды-проверки: <span>
+        <span th:text="${camunda.id}"></span>
+        <br>
+        <span>Процесс: <span th:text="${camunda.instanceId}"></span></span>
+        <br>
+        <span>Паспорт: <span th:text="${passport.id}"></span></span>
+    </span></p>
+        <!-- Другие детали элемента -->
+    </div>
+</div>
+</body>
+</html>

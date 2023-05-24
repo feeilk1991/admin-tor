@@ -12,12 +12,6 @@ import java.util.List;
 public class AppealPassportController {
     @Autowired
     private AppealPassportService appealPassportService;
-
-    @GetMapping("/passports")
-    public List<AppealPassport> findListAppeals()
-    {
-        return appealPassportService.findAllAppeals();
-    }
     @GetMapping("/passports/{id}")
     public AppealPassport findAppealPassportId(@PathVariable String id) {
         return appealPassportService.getAppealPassportId(id);

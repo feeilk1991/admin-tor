@@ -14,6 +14,4 @@ public interface AppealPassportService {
 
     @NonNull
     void deleteAppealPassport(String uid);
-
-    List<AppealPassport> findAllAppeals();
 }

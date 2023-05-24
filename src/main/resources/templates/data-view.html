@@ -20,26 +20,79 @@
     <title>Data Form</title>
 </head>
 <body>
+
+<hr/>
+<h2>Данные КНМ </h2>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Красивая таблица</title>
+    <style>
+        /* Стили для красивой таблицы */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
 <h1>Введите ID</h1>
 <form method="get" action="#" th:action="@{/api/data/{id}}">
     <label>
         <input type="text" name="id" placeholder="ID" th:value="${id}">
     </label>
+    <select>
+
+    </select>
     <button type="submit">Получить</button>
 </form>
-<hr/>
-<h2>Данные КНМ </h2>
+<table th:if="${appeals != null}">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Номер</th>
+        <th>Короткий номер</th>
+        <th>...</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="appeal : ${appeals}">
+        <td th:text="${appeal.id}"></td>
+        <td th:text="${appeal.number}"></td>
+        <td th:text="${appeal.shortNumber}"></td>
+        <td><a th:href="@{/api/data/details/{id}(id=${appeal.id})}">Подробнее</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
 <div th:if="${appeal != null && appeal.id != null}">
     <p>ID: <span th:text="${appeal.id}"></span></p>
     <p>Номер проверки: <span th:text="${appeal.number}"></span></p>
     <p>Связь камунды-проверки: <span>
         <span th:text="${camunda.id}"></span>
-        <span th:text="${camunda.mainId}"></span>
+        <br>
         <span>Процесс: <span th:text="${camunda.instanceId}"></span></span>
+        <br>
+        <span>Паспорт: <span th:text="${passport.id}"></span></span>
     </span></p>
-    <div th:if="${appeal.subServices != null}">
-
-    </div>
+    <a th:href="@{/api/data/details/{id}(id=${appeal.id})}">Подробнее</a>
 </div>
 </body>
 <!-- MDB -->

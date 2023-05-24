@@ -29,6 +29,9 @@ public class AppealServiceImpl implements AppealService {
     public Appeal updateAppeal(String uid, Appeal request) {
         Appeal appeal = Objects.requireNonNull(appealRepository.findById(uid).orElse(null));
 
+        if (appeal.getId().isEmpty()) {
+            throw new NullPointerException();
+        }
         if (request != null) {
             appeal.setNumber(request.getNumber());
             appeal.setShortNumber(request.getShortNumber());
