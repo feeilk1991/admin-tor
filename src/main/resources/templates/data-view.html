@@ -27,7 +27,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Красивая таблица</title>
     <style>
         /* Стили для красивой таблицы */
         table {
@@ -56,15 +55,14 @@
     <label>
         <input type="text" name="id" placeholder="ID" th:value="${id}">
     </label>
-    <select>
-
-    </select>
     <button type="submit">Получить</button>
 </form>
 <table th:if="${appeals != null}">
     <thead>
     <tr>
         <th>ID</th>
+        <th>Имя коллекции</th>
+        <th>GUID</th>
         <th>Номер</th>
         <th>Короткий номер</th>
         <th>...</th>
@@ -73,6 +71,8 @@
     <tbody>
     <tr th:each="appeal : ${appeals}">
         <td th:text="${appeal.id}"></td>
+        <td th:text="${appeal.parentEntries}"></td>
+        <td th:text="${appeal.guid}"></td>
         <td th:text="${appeal.number}"></td>
         <td th:text="${appeal.shortNumber}"></td>
         <td><a th:href="@{/api/data/details/{id}(id=${appeal.id})}">Подробнее</a>
