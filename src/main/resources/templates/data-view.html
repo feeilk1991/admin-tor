@@ -82,18 +82,18 @@
 </table>
 </body>
 </html>
-<div th:if="${appeal != null && appeal.id != null}">
-    <p>ID: <span th:text="${appeal.id}"></span></p>
-    <p>Номер проверки: <span th:text="${appeal.number}"></span></p>
-    <p>Связь камунды-проверки: <span>
-        <span th:text="${camunda.id}"></span>
-        <br>
-        <span>Процесс: <span th:text="${camunda.instanceId}"></span></span>
-        <br>
-        <span>Паспорт: <span th:text="${passport.id}"></span></span>
-    </span></p>
-    <a th:href="@{/api/data/details/{id}(id=${appeal.id})}">Подробнее</a>
-</div>
+<!--<div th:if="${appeal != null && appeal.id != null}">-->
+<!--    <p>ID: <span th:text="${appeal.id}"></span></p>-->
+<!--    <p>Номер проверки: <span th:text="${appeal.number}"></span></p>-->
+<!--    <p>Связь камунды-проверки: <span>-->
+<!--        <span th:text="${camunda.id}"></span>-->
+<!--        <br>-->
+<!--        <span>Процесс: <span th:text="${camunda.instanceId}"></span></span>-->
+<!--        <br>-->
+<!--        <span>Паспорт: <span th:text="${passport.id}"></span></span>-->
+<!--    </span></p>-->
+<!--    <a th:href="@{/api/data/details/{id}(id=${appeal.id})}">Подробнее</a>-->
+<!--</div>-->
 </body>
 <!-- MDB -->
 
