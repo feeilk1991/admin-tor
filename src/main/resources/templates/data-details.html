@@ -59,6 +59,7 @@
                 <th>GUID проверки</th>
                 <th>Камунда ID</th>
                 <th>Process ID</th>
+                <th>Task ID</th>
                 <th>Паспорт</th>
                 <th>...</th>
             </tr>
@@ -76,6 +77,9 @@
                 </td>
                 <td>
                     <span th:text="${camunda.instanceId}"></span>
+                </td>
+                <td>
+                    <span th:text="${envelope.getTaskId()}"></span>
                 </td>
                 <td>
                     <span th:text="${passport.id}"></span>

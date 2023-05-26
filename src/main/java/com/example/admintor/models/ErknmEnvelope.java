@@ -10,6 +10,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class ErknmEnvelope {
     @Id
     private String id;
+    @Field("mainId")
+    private String mainId;
     @Field("taskId")
     private String taskId;
 }

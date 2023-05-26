@@ -3,8 +3,10 @@ package com.example.admintor.controller;
 import com.example.admintor.models.Appeal;
 import com.example.admintor.models.AppealPassport;
 import com.example.admintor.models.Camunda;
+import com.example.admintor.models.ErknmEnvelope;
 import com.example.admintor.service.appeal.AppealService;
 import com.example.admintor.service.camunda.CamundaService;
+import com.example.admintor.service.envelope.ErknmEnvelopeService;
 import com.example.admintor.service.passport.AppealPassportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -20,12 +22,12 @@ import java.util.Optional;
 public class AppealController {
     @Autowired
     private AppealService appealService;
-
     @Autowired
     private CamundaService camundaService;
-
     @Autowired
     private AppealPassportService appealPassportService;
+    @Autowired
+    private ErknmEnvelopeService erknmEnvelopeService;
 
     @GetMapping("/data")
     public ModelAndView showAllAppeals(Model model) throws NullPointerException {
@@ -61,15 +63,17 @@ public class AppealController {
         return new ModelAndView("data-details");
     }
 
-    private void getAppealAttribute(Appeal appeal, Model model, String id) {
+    private void getAppealAttribute(Appeal appeal, Model model, String mainId) {
         model.addAttribute("appeal", appeal);
         if (appeal != null) {
-            Camunda camunda = camundaService.getCamundaByMainId(id);
+            Camunda camunda = camundaService.getCamundaByMainId(mainId);
             model.addAttribute("camunda", camunda);
 
-            AppealPassport appealPassport = appealPassportService.getAppealPassportId(id);
+            AppealPassport appealPassport = appealPassportService.getAppealPassportId(mainId);
             model.addAttribute("passport", appealPassport);
 
+            Optional<ErknmEnvelope> envelope = erknmEnvelopeService.getErnmEnvelopeByAppealId(mainId);
+            envelope.ifPresent(erknmEnvelope -> model.addAttribute("envelope", erknmEnvelope));
         }
     }
 
