@@ -29,6 +29,10 @@ public class AppealController {
     @Autowired
     private ErknmEnvelopeService erknmEnvelopeService;
 
+    private String PROD = "http://camunda.torknd.cloud-uat.vms.torcloud.digital.gov.ru";
+
+    private final String DEMO = "http://camunda.knd.cloud-preprod.vms.torcloud.digital.gov.ru";
+
     @GetMapping("/data")
     public ModelAndView showAllAppeals(Model model) throws NullPointerException {
         List<Appeal> appeals = new ArrayList<>();;

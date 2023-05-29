@@ -7,4 +7,5 @@ import java.util.List;
 public interface CamundaService {
     Camunda getCamundaByMainId (String uid);
     List<Camunda> findCamunda(Camunda camunda);
+    Camunda getCamundaByProcessInstanceId(String processInstanceId);
 }

@@ -12,4 +12,7 @@ import java.util.List;
 public interface CamundaRepository extends MongoRepository<Camunda, String> {
     @Query("{'mainId' : ?0}")
     Camunda findCamunda(@Param("mainId") String mainId);
+
+    @Query("{'processInstanceId':  ?0}")
+    Camunda getCamundaByProcessInstanceId(@Param("processInstanceId") String processInstanceId);
 }

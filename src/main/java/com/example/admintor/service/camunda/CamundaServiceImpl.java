@@ -23,6 +23,11 @@ public class CamundaServiceImpl implements CamundaService {
     {
         return camundaRepository.findAll(Example.of(camunda));
     }
+
+    @Override
+    public Camunda getCamundaByProcessInstanceId(String processInstanceId) {
+        return camundaRepository.getCamundaByProcessInstanceId(processInstanceId);
+    }
     @Override
     public Camunda getCamundaByMainId(String mainId) {
         return camundaRepository.findCamunda(mainId);
