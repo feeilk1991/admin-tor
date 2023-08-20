@@ -60,6 +60,7 @@ public class AppealsList extends VerticalLayout {
 
         //grid.addColumn(contact -> contact.getCompany().getName()).setHeader("Company");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
+
     }
 
     private HorizontalLayout getToolbar() {
