@@ -12,6 +12,6 @@ public class Camunda {
     private String id;
     @Field("mainId")
     private String mainId;
-    @Field("processInstanceId")
+    @Field("instanceId")
     private String instanceId;
 }

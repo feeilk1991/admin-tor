@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.List;
 
 @Data
-@Document(collection = "appeals")
+@Document(collection = "preventionAppeals")
 public class Appeal {
     @Id
     private String id;

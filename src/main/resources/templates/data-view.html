@@ -63,8 +63,10 @@
         <th>ID</th>
         <th>Имя коллекции</th>
         <th>GUID</th>
-        <th>Номер</th>
-        <th>Короткий номер</th>
+        <th>Камунда ID</th>
+        <th>Process ID</th>
+        <th>Task ID</th>
+        <th>Паспорт</th>
         <th>...</th>
     </tr>
     </thead>
@@ -73,9 +75,20 @@
         <td th:text="${appeal.id}"></td>
         <td th:text="${appeal.parentEntries}"></td>
         <td th:text="${appeal.guid}"></td>
-        <td th:text="${appeal.number}"></td>
-        <td th:text="${appeal.shortNumber}"></td>
-        <td><a th:href="@{/api/data/details/{id}(id=${appeal.id})}">Подробнее</a>
+        <td th:text="${camunda.id}"></td>
+        <td th:text="${instanceId}"></td>
+        <td></td>
+        <td></td>
+<!--        <td th:text="${envelope.getTaskId()}"></td>-->
+<!--        <td th:text="${passport.id}"></td>-->
+        <td>
+
+            <form method="post" th:action="@{'/api/data/sendRequests/' + ${instanceId}}">
+                <label for="platform">Платформа:</label>
+                    <select id="platform" name="platform">
+                        <option value=" tor">TOR</option>
+                    </select> <br>
+                <button type="submit">Завершить</button> </form>
         </td>
     </tr>
     </tbody>
